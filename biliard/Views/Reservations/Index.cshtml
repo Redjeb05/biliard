@@ -1,0 +1,102 @@
+﻿@model IEnumerable<biliard.Data.Reservation>
+
+@{
+    ViewData["Title"] = "Reservations Index";
+}
+
+<div class="container mt-5">
+    <h1 class="display-4 text-center mb-4">Reservations</h1>
+
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-3">
+            <div class="counter-box colored shadow-sm p-3 mb-4 bg-white rounded">
+                <i class="fa fa-users fa-2x text-primary mb-2"></i>
+                <span class="counter h4">@ViewData["Users"]</span>
+                <p>Users</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="counter-box shadow-sm p-3 mb-4 bg-white rounded">
+                <i class="fa fa-table fa-2x text-success mb-2"></i>
+                <span class="counter h4">@ViewData["Tables"]</span>
+                <p>Tables</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="counter-box shadow-sm p-3 mb-4 bg-white rounded">
+                <i class="fa fa-calendar-check-o fa-2x text-warning mb-2"></i>
+                <span class="counter h4">@ViewData["Reservations"]</span>
+                <p>Reservations</p>
+            </div>
+        </div>
+    </div>
+
+    <p class="text-center">
+        <a asp-action="Create" class="btn btn-primary mb-3">Create New Reservation</a>
+    </p>
+
+    <table class="table table-hover table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.First().User.FullName)</th>
+                <th>@Html.DisplayNameFor(model => model.First().Table.TableId)</th>
+                <th>@Html.DisplayNameFor(model => model.First().DateAndHour)</th>
+                <th>@Html.DisplayNameFor(model => model.First().Description)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.User.FullName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Table.TableId)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DateAndHour)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">
+                            <i class="fa fa-edit"></i> Edit
+                        </a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">
+                            <i class="fa fa-info-circle"></i> Details
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">
+                            <i class="fa fa-trash"></i> Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .counter-box {
+        text-align: center;
+        padding: 20px;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+    }
+
+        .counter-box:hover {
+            transform: translateY(-10px);
+        }
+
+    .counter {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .fa {
+        transition: color 0.3s ease;
+    }
+
+        .fa:hover {
+            color: #007bff;
+        }
+
+    .colored {
+        background-color: #f8f9fa;
+    }
+</style>

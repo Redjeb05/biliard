@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center my-5">
+    <h1 class="display-4">Welcome</h1>
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-3">
+            <div class="counter-box colored shadow-sm p-3 mb-5 bg-white rounded">
+                <i class="fa fa-thumbs-o-up fa-3x text-primary mb-3"></i>
+                <span class="counter h2">@ViewData["Users"]</span>
+                <p>Users</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="counter-box shadow-sm p-3 mb-5 bg-white rounded">
+                <i class="fa fa-group fa-3x text-success mb-3"></i>
+                <span class="counter h2">@ViewData["Tables"]</span>
+                <p>Tables</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="counter-box shadow-sm p-3 mb-5 bg-white rounded">
+                <i class="fa fa-shopping-cart fa-3x text-warning mb-3"></i>
+                <span class="counter h2">@ViewData["Reservations"]</span>
+                <p>Reservations</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .counter-box {
+        text-align: center;
+        padding: 20px;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+    }
+
+        .counter-box:hover {
+            transform: translateY(-10px);
+        }
+
+    .counter {
+        display: block;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .fa {
+        transition: color 0.3s ease;
+    }
+
+        .fa:hover {
+            color: #007bff;
+        }
+
+    .colored {
+        background-color: #f8f9fa;
+    }
+</style>
